@@ -1,23 +1,36 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  BigDecimal: { input: any; output: any; }
-  Date: { input: any; output: any; }
-  JSON: { input: any; output: any; }
-  LocalDateTime: { input: any; output: any; }
-  LocalTime: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  BigDecimal: { input: any; output: any };
+  Date: { input: any; output: any };
+  JSON: { input: any; output: any };
+  LocalDateTime: { input: any; output: any };
+  LocalTime: { input: any; output: any };
 };
 
 export type AdminStaticsResponse = {
@@ -33,7 +46,7 @@ export type AdminStaticsResponse = {
 export enum AttendeeType {
   Company = 'COMPANY',
   Private = 'PRIVATE',
-  Vib = 'VIB'
+  Vib = 'VIB',
 }
 
 export type Company = Node & {
@@ -133,7 +146,7 @@ export type ContactUsInput = {
 export enum ContractType {
   Other = 'OTHER',
   Permanent = 'PERMANENT',
-  Seasonal = 'SEASONAL'
+  Seasonal = 'SEASONAL',
 }
 
 export type Employee = Node & {
@@ -385,7 +398,7 @@ export enum EventType {
   Exhibition = 'EXHIBITION',
   Other = 'OTHER',
   Seminar = 'SEMINAR',
-  Workshop = 'WORKSHOP'
+  Workshop = 'WORKSHOP',
 }
 
 /** ###### */
@@ -430,7 +443,7 @@ export enum ExhibitionType {
   Other = 'OTHER',
   RealEstateExhibition = 'REAL_ESTATE_EXHIBITION',
   TechnologyExhibition = 'TECHNOLOGY_EXHIBITION',
-  WeddingExhibition = 'WEDDING_EXHIBITION'
+  WeddingExhibition = 'WEDDING_EXHIBITION',
 }
 
 export type ExternalService = Node & {
@@ -549,7 +562,7 @@ export enum FloorMaterial {
   Concrete = 'CONCRETE',
   Epoxy = 'EPOXY',
   Other = 'OTHER',
-  Wood = 'WOOD'
+  Wood = 'WOOD',
 }
 
 /**  ==== Mutations ==== */
@@ -610,12 +623,10 @@ export type Mutation = {
   validateRegister?: Maybe<Scalars['Boolean']['output']>;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationActivateOrUnActivateExternalServiceArgs = {
   externalServiceId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationAddSectionToEventArgs = {
@@ -623,84 +634,70 @@ export type MutationAddSectionToEventArgs = {
   sectionIds: Array<Scalars['ID']['input']>;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationApproveEventRequestArgs = {
   requestId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationBlockUnBlockEmployeeArgs = {
   employeeId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationCreatNewCompanyArgs = {
   input: CompanyInput;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationCreatNewOrganizerArgs = {
   input: CompanyInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationCreateCategoryArgs = {
   input?: InputMaybe<EventCategoryInput>;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationCreateContactUsArgs = {
   input: ContactUsInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationCreateEventByAdminArgs = {
   input?: InputMaybe<EventInput>;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationCreateEventRequestArgs = {
   input?: InputMaybe<EventRequestInput>;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationCreateExternalServiceArgs = {
   input: ExternalServiceCreateInput;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationCreateExtraServiceArgs = {
   input: ExtraServiceInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationCreateNewEmployeeArgs = {
   input?: InputMaybe<EmployeeInput>;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationCreateNewFaqArgs = {
   faq: FaqInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationCreateSectionArgs = {
   input: SectionCreateInput;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationCreateTicketArgs = {
@@ -708,90 +705,75 @@ export type MutationCreateTicketArgs = {
   input: TicketInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationDeleteCategoryArgs = {
   categoryId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationDeleteContactUsArgs = {
   contactId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationDeleteEmployeeArgs = {
   employeeId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationDeleteEventArgs = {
   eventId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationDeleteEventAgentsArgs = {
   agentId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationDeleteExternalServiceArgs = {
   externalServiceId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationDeleteExtraServiceArgs = {
   serviceId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationDeleteFaqArgs = {
   faqId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationDeleteSectionArgs = {
   sectionId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationDeleteTicketArgs = {
   ticketId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationGenerateCodeForEventArgs = {
   eventId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationRegisterToEventArgs = {
   otp: Scalars['String']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationRejectEventRequestArgs = {
   requestId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationToggleCanceledEventArgs = {
   eventId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationUpdateCategoryArgs = {
@@ -799,12 +781,10 @@ export type MutationUpdateCategoryArgs = {
   input?: InputMaybe<EventCategoryInput>;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationUpdateCompanyArgs = {
   input: CompanyUpdateInput;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationUpdateContactUsStatusArgs = {
@@ -812,55 +792,46 @@ export type MutationUpdateContactUsStatusArgs = {
   state?: InputMaybe<RequestState>;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationUpdateEmployeeArgs = {
   input?: InputMaybe<EmployeeUpdateInput>;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationUpdateEventArgs = {
   input?: InputMaybe<EventUpdateInput>;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationUpdateEventRequestArgs = {
   input?: InputMaybe<EventRequestUpdateInput>;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationUpdateExternalServiceArgs = {
   input: ExternalServiceUpdateInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationUpdateExtraServiceArgs = {
   input: ExtraServiceUpdateInput;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationUpdateFaqArgs = {
   faq: FaqInput;
 };
 
-
 /**  ==== Mutations ==== */
 export type MutationUpdateSectionArgs = {
   input: SectionUpdateInput;
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationUpdateUserPasswordArgs = {
   newPass: Scalars['String']['input'];
   oldPass: Scalars['String']['input'];
 };
-
 
 /**  ==== Mutations ==== */
 export type MutationValidateRegisterArgs = {
@@ -881,7 +852,7 @@ export enum OrganizationType {
   /**  جهة حكومية */
   NonProfit = 'NON_PROFIT',
   /**  منظمة غير ربحية */
-  Other = 'OTHER'
+  Other = 'OTHER',
 }
 
 export type PageResponse = {
@@ -921,7 +892,7 @@ export enum ProfessionalSector {
   PublicSectorAndNonprofitOrganizations = 'PUBLIC_SECTOR_AND_NONPROFIT_ORGANIZATIONS',
   TechnologyAndCommunications = 'TECHNOLOGY_AND_COMMUNICATIONS',
   TraditionalAndECommerce = 'TRADITIONAL_AND_E_COMMERCE',
-  TransportationAndLogisticsServices = 'TRANSPORTATION_AND_LOGISTICS_SERVICES'
+  TransportationAndLogisticsServices = 'TRANSPORTATION_AND_LOGISTICS_SERVICES',
 }
 
 export enum Province {
@@ -937,7 +908,7 @@ export enum Province {
   Quneitra = 'QUNEITRA',
   Raqqa = 'RAQQA',
   Suwayda = 'SUWAYDA',
-  Tartous = 'TARTOUS'
+  Tartous = 'TARTOUS',
 }
 
 /**  ==== Queries ==== */
@@ -993,7 +964,6 @@ export type Query = {
   unitTypeAllLabels?: Maybe<Array<Maybe<EnumLabelPair>>>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAdminHomeStaticsArgs = {
   fromDate?: InputMaybe<Scalars['Date']['input']>;
@@ -1001,13 +971,11 @@ export type QueryGetAdminHomeStaticsArgs = {
   toDate?: InputMaybe<Scalars['Date']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllAvailableAndUnAvailableSectionByTimeArgs = {
   from: Scalars['String']['input'];
   to: Scalars['String']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetAllCompanyForEventArgs = {
@@ -1016,12 +984,10 @@ export type QueryGetAllCompanyForEventArgs = {
   size?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllCompanySectionForEventArgs = {
   eventId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetAllContactUsArgs = {
@@ -1033,7 +999,6 @@ export type QueryGetAllContactUsArgs = {
   to?: InputMaybe<Scalars['Date']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllEmployeesArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -1042,7 +1007,6 @@ export type QueryGetAllEmployeesArgs = {
   size?: InputMaybe<Scalars['Int']['input']>;
   status?: InputMaybe<Scalars['Boolean']['input']>;
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetAllEventArgs = {
@@ -1053,7 +1017,6 @@ export type QueryGetAllEventArgs = {
   size?: InputMaybe<Scalars['Int']['input']>;
   toDate?: InputMaybe<Scalars['Date']['input']>;
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetAllEventRequestArgs = {
@@ -1067,7 +1030,6 @@ export type QueryGetAllEventRequestArgs = {
   to?: InputMaybe<Scalars['Date']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllExternalServiceArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -1075,13 +1037,11 @@ export type QueryGetAllExternalServiceArgs = {
   type: ServiceType;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllExtraServiceArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
   size?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetAllOrganizerArgs = {
@@ -1094,7 +1054,6 @@ export type QueryGetAllOrganizerArgs = {
   to?: InputMaybe<Scalars['Date']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllSectionArgs = {
   fromDate?: InputMaybe<Scalars['Date']['input']>;
@@ -1103,7 +1062,6 @@ export type QueryGetAllSectionArgs = {
   toDate?: InputMaybe<Scalars['Date']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAllTicketsForEventArgs = {
   eventId: Scalars['ID']['input'];
@@ -1111,48 +1069,40 @@ export type QueryGetAllTicketsForEventArgs = {
   size?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetAvailableServiceBySectionsArgs = {
   sectionIds: Array<Scalars['ID']['input']>;
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetCategoryByIdArgs = {
   categoryId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetContactUsByIdArgs = {
   contactId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetEmployeeByIdArgs = {
   employeeId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetEventByIdArgs = {
   eventId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetEventBySpecialTextArgs = {
   specialText?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetEventRequestByIdArgs = {
   eventRequestId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetEventsGroupedByYearMonthArgs = {
@@ -1164,30 +1114,25 @@ export type QueryGetEventsGroupedByYearMonthArgs = {
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetExternalServiceByIdArgs = {
   externalServiceId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetExtraServiceByIdArgs = {
   serviceId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetFaqByIdArgs = {
   faqId: Scalars['ID']['input'];
 };
 
-
 /**  ==== Queries ==== */
 export type QueryGetSectionByIdArgs = {
   sectionId: Scalars['ID']['input'];
 };
-
 
 /**  ==== Queries ==== */
 export type QueryGetSectionReserveBySectionIdArgs = {
@@ -1201,7 +1146,7 @@ export enum RequestState {
   Approved = 'APPROVED',
   Processing = 'PROCESSING',
   Rejected = 'REJECTED',
-  Requested = 'REQUESTED'
+  Requested = 'REQUESTED',
 }
 
 export enum RequestStatus {
@@ -1213,7 +1158,7 @@ export enum RequestStatus {
   /**  تم إنشاؤه لكن لم يُرسل بعد */
   Pending = 'PENDING',
   /**  تمت الموافقة */
-  Rejected = 'REJECTED'
+  Rejected = 'REJECTED',
 }
 
 export type Section = {
@@ -1274,7 +1219,7 @@ export enum SectionType {
   Equipped = 'EQUIPPED',
   NotEquipped = 'NOT_EQUIPPED',
   Open = 'OPEN',
-  Other = 'OTHER'
+  Other = 'OTHER',
 }
 
 export type SectionUpdateInput = {
@@ -1315,7 +1260,7 @@ export enum ServiceCategory {
   Media = 'MEDIA',
   /**  موقع إلكتروني */
   Religious = 'RELIGIOUS',
-  Security = 'SECURITY'
+  Security = 'SECURITY',
 }
 
 export enum ServiceType {
@@ -1323,7 +1268,7 @@ export enum ServiceType {
   Hotel = 'HOTEL',
   Restaurant = 'RESTAURANT',
   Taxi = 'TAXI',
-  TouristPlaces = 'TOURIST_PLACES'
+  TouristPlaces = 'TOURIST_PLACES',
 }
 
 export type Ticket = Node & {
@@ -1371,7 +1316,7 @@ export enum TimeFilter {
   Duration = 'DURATION',
   ThisMonth = 'THIS_MONTH',
   ThisWeek = 'THIS_WEEK',
-  Today = 'TODAY'
+  Today = 'TODAY',
 }
 
 export enum UnitType {
@@ -1379,7 +1324,7 @@ export enum UnitType {
   PerEvent = 'PER_EVENT',
   PerHour = 'PER_HOUR',
   PerTrip = 'PER_TRIP',
-  PerUnit = 'PER_UNIT'
+  PerUnit = 'PER_UNIT',
 }
 
 export type YearMonthEventsDto = {
@@ -1393,8 +1338,60 @@ export type GetEventByIdQueryVariables = Exact<{
   eventId: Scalars['ID']['input'];
 }>;
 
-
-export type GetEventByIdQuery = { __typename?: 'Query', getEventById?: { __typename?: 'Event', id: string, eventName?: string | null, description?: string | null, address?: string | null, startDate?: any | null, endDate?: any | null, eventTime?: any | null, endTime?: any | null, type?: string | null, exhibitionType?: string | null, eventLink?: string | null, eventImage?: string | null, expectedNumberOfAttendees?: number | null, expectedNumberOfCompanyAttendees?: number | null, status?: string | null, category?: { __typename?: 'EventCategory', id?: string | null, nameAr?: string | null, nameEn?: string | null, description?: string | null } | null, owner?: { __typename?: 'Company', id?: string | null, companyName?: string | null, ownerFullName?: string | null, companyPhone?: string | null, companyEmail?: string | null, companyAddress?: string | null } | null, agents?: Array<{ __typename?: 'EventAgent', id?: string | null, companyName?: string | null, companyPhoto?: string | null } | null> | null, sections?: Array<{ __typename?: 'Section', id: string, name?: string | null } | null> | null, services?: Array<{ __typename?: 'ExtraService', id: string, name: string, category: ServiceCategory } | null> | null } | null };
+export type GetEventByIdQuery = {
+  __typename?: 'Query';
+  getEventById?: {
+    __typename?: 'Event';
+    id: string;
+    eventName?: string | null;
+    description?: string | null;
+    address?: string | null;
+    startDate?: any | null;
+    endDate?: any | null;
+    eventTime?: any | null;
+    endTime?: any | null;
+    type?: string | null;
+    exhibitionType?: string | null;
+    eventLink?: string | null;
+    eventImage?: string | null;
+    expectedNumberOfAttendees?: number | null;
+    expectedNumberOfCompanyAttendees?: number | null;
+    status?: string | null;
+    category?: {
+      __typename?: 'EventCategory';
+      id?: string | null;
+      nameAr?: string | null;
+      nameEn?: string | null;
+      description?: string | null;
+    } | null;
+    owner?: {
+      __typename?: 'Company';
+      id?: string | null;
+      companyName?: string | null;
+      ownerFullName?: string | null;
+      companyPhone?: string | null;
+      companyEmail?: string | null;
+      companyAddress?: string | null;
+    } | null;
+    agents?: Array<{
+      __typename?: 'EventAgent';
+      id?: string | null;
+      companyName?: string | null;
+      companyPhoto?: string | null;
+    } | null> | null;
+    sections?: Array<{
+      __typename?: 'Section';
+      id: string;
+      name?: string | null;
+    } | null> | null;
+    services?: Array<{
+      __typename?: 'ExtraService';
+      id: string;
+      name: string;
+      category: ServiceCategory;
+    } | null> | null;
+  } | null;
+};
 
 export type GetAllSectionsQueryVariables = Exact<{
   timeFilter: TimeFilter;
@@ -1403,15 +1400,73 @@ export type GetAllSectionsQueryVariables = Exact<{
   toDate?: InputMaybe<Scalars['Date']['input']>;
 }>;
 
-
-export type GetAllSectionsQuery = { __typename?: 'Query', getAllSection?: Array<{ __typename?: 'Section', id: string, name?: string | null, totalAreaSqm?: number | null, ceilingHeightM?: number | null, floorMaterial?: FloorMaterial | null, hasLighting?: boolean | null, hasAirConditioning?: boolean | null, hasEmergencyExit?: boolean | null, hasInternet?: boolean | null, hasElectricity?: boolean | null, parkingSpots?: boolean | null, isActive?: boolean | null, sectionType?: SectionType | null, hasReserveByAdmin?: boolean | null, reserveFrom?: any | null, reserveTo?: any | null, createDate?: string | null, updateDate?: string | null } | null> | null };
+export type GetAllSectionsQuery = {
+  __typename?: 'Query';
+  getAllSection?: Array<{
+    __typename?: 'Section';
+    id: string;
+    name?: string | null;
+    totalAreaSqm?: number | null;
+    ceilingHeightM?: number | null;
+    floorMaterial?: FloorMaterial | null;
+    hasLighting?: boolean | null;
+    hasAirConditioning?: boolean | null;
+    hasEmergencyExit?: boolean | null;
+    hasInternet?: boolean | null;
+    hasElectricity?: boolean | null;
+    parkingSpots?: boolean | null;
+    isActive?: boolean | null;
+    sectionType?: SectionType | null;
+    hasReserveByAdmin?: boolean | null;
+    reserveFrom?: any | null;
+    reserveTo?: any | null;
+    createDate?: string | null;
+    updateDate?: string | null;
+  } | null> | null;
+};
 
 export type GetSectionByIdQueryVariables = Exact<{
   sectionId: Scalars['ID']['input'];
 }>;
 
-
-export type GetSectionByIdQuery = { __typename?: 'Query', getSectionById?: { __typename?: 'Section', id: string, name?: string | null, totalAreaSqm?: number | null, ceilingHeightM?: number | null, floorMaterial?: FloorMaterial | null, hasLighting?: boolean | null, hasAirConditioning?: boolean | null, hasEmergencyExit?: boolean | null, hasInternet?: boolean | null, hasElectricity?: boolean | null, parkingSpots?: boolean | null, notes?: string | null, sectionType?: SectionType | null, isActive?: boolean | null, sectionImage?: string | null, hasReserveByAdmin?: boolean | null, reserveFrom?: any | null, reserveTo?: any | null, createDate?: string | null, updateDate?: string | null, services?: Array<{ __typename?: 'ExtraService', id: string, code: string, name: string, description?: string | null, category: ServiceCategory, unitType: UnitType, defaultPrice: any, isMandatory: boolean, isActive: boolean } | null> | null } | null };
+export type GetSectionByIdQuery = {
+  __typename?: 'Query';
+  getSectionById?: {
+    __typename?: 'Section';
+    id: string;
+    name?: string | null;
+    totalAreaSqm?: number | null;
+    ceilingHeightM?: number | null;
+    floorMaterial?: FloorMaterial | null;
+    hasLighting?: boolean | null;
+    hasAirConditioning?: boolean | null;
+    hasEmergencyExit?: boolean | null;
+    hasInternet?: boolean | null;
+    hasElectricity?: boolean | null;
+    parkingSpots?: boolean | null;
+    notes?: string | null;
+    sectionType?: SectionType | null;
+    isActive?: boolean | null;
+    sectionImage?: string | null;
+    hasReserveByAdmin?: boolean | null;
+    reserveFrom?: any | null;
+    reserveTo?: any | null;
+    createDate?: string | null;
+    updateDate?: string | null;
+    services?: Array<{
+      __typename?: 'ExtraService';
+      id: string;
+      code: string;
+      name: string;
+      description?: string | null;
+      category: ServiceCategory;
+      unitType: UnitType;
+      defaultPrice: any;
+      isMandatory: boolean;
+      isActive: boolean;
+    } | null> | null;
+  } | null;
+};
 
 export type GetSectionReservesQueryVariables = Exact<{
   sectionId: Scalars['ID']['input'];
@@ -1420,53 +1475,926 @@ export type GetSectionReservesQueryVariables = Exact<{
   to?: InputMaybe<Scalars['Date']['input']>;
 }>;
 
-
-export type GetSectionReservesQuery = { __typename?: 'Query', getSectionReserveBySectionId?: Array<{ __typename?: 'Event', id: string, eventName?: string | null, status?: string | null, type?: string | null, startDate?: any | null, endDate?: any | null, owner?: { __typename?: 'Company', id?: string | null, companyName?: string | null, ownerFullName?: string | null, companyPhone?: string | null } | null } | null> | null };
+export type GetSectionReservesQuery = {
+  __typename?: 'Query';
+  getSectionReserveBySectionId?: Array<{
+    __typename?: 'Event';
+    id: string;
+    eventName?: string | null;
+    status?: string | null;
+    type?: string | null;
+    startDate?: any | null;
+    endDate?: any | null;
+    owner?: {
+      __typename?: 'Company';
+      id?: string | null;
+      companyName?: string | null;
+      ownerFullName?: string | null;
+      companyPhone?: string | null;
+    } | null;
+  } | null> | null;
+};
 
 export type CreateSectionMutationVariables = Exact<{
   input: SectionCreateInput;
 }>;
 
-
-export type CreateSectionMutation = { __typename?: 'Mutation', createSection: { __typename?: 'Section', id: string, name?: string | null } };
+export type CreateSectionMutation = {
+  __typename?: 'Mutation';
+  createSection: { __typename?: 'Section'; id: string; name?: string | null };
+};
 
 export type UpdateSectionMutationVariables = Exact<{
   input: SectionUpdateInput;
 }>;
 
-
-export type UpdateSectionMutation = { __typename?: 'Mutation', updateSection: { __typename?: 'Section', id: string, name?: string | null } };
+export type UpdateSectionMutation = {
+  __typename?: 'Mutation';
+  updateSection: { __typename?: 'Section'; id: string; name?: string | null };
+};
 
 export type DeleteSectionMutationVariables = Exact<{
   sectionId: Scalars['ID']['input'];
 }>;
 
-
-export type DeleteSectionMutation = { __typename?: 'Mutation', deleteSection: boolean };
+export type DeleteSectionMutation = {
+  __typename?: 'Mutation';
+  deleteSection: boolean;
+};
 
 export type GetAllExtraServicesQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
   size?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
-
-export type GetAllExtraServicesQuery = { __typename?: 'Query', getAllExtraService: { __typename?: 'PageResponse', page?: number | null, size?: number | null, totalPages?: number | null, totalElements?: number | null, content?: Array<
+export type GetAllExtraServicesQuery = {
+  __typename?: 'Query';
+  getAllExtraService: {
+    __typename?: 'PageResponse';
+    page?: number | null;
+    size?: number | null;
+    totalPages?: number | null;
+    totalElements?: number | null;
+    content?: Array<
       | { __typename?: 'Company' }
       | { __typename?: 'ContactUs' }
       | { __typename?: 'Employee' }
       | { __typename?: 'Event' }
       | { __typename?: 'EventRequest' }
       | { __typename?: 'ExternalService' }
-      | { __typename?: 'ExtraService', id: string, code: string, name: string, description?: string | null, category: ServiceCategory, unitType: UnitType, defaultPrice: any, isMandatory: boolean, isActive: boolean }
+      | {
+          __typename?: 'ExtraService';
+          id: string;
+          code: string;
+          name: string;
+          description?: string | null;
+          category: ServiceCategory;
+          unitType: UnitType;
+          defaultPrice: any;
+          isMandatory: boolean;
+          isActive: boolean;
+        }
       | { __typename?: 'Ticket' }
-     | null> | null } };
+      | null
+    > | null;
+  };
+};
 
-
-export const GetEventByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetEventById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"eventId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getEventById"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"eventId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"eventId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventName"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"endDate"}},{"kind":"Field","name":{"kind":"Name","value":"eventTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"exhibitionType"}},{"kind":"Field","name":{"kind":"Name","value":"eventLink"}},{"kind":"Field","name":{"kind":"Name","value":"eventImage"}},{"kind":"Field","name":{"kind":"Name","value":"expectedNumberOfAttendees"}},{"kind":"Field","name":{"kind":"Name","value":"expectedNumberOfCompanyAttendees"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"nameAr"}},{"kind":"Field","name":{"kind":"Name","value":"nameEn"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"owner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"ownerFullName"}},{"kind":"Field","name":{"kind":"Name","value":"companyPhone"}},{"kind":"Field","name":{"kind":"Name","value":"companyEmail"}},{"kind":"Field","name":{"kind":"Name","value":"companyAddress"}}]}},{"kind":"Field","name":{"kind":"Name","value":"agents"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"companyPhoto"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"category"}}]}}]}}]}}]} as unknown as DocumentNode<GetEventByIdQuery, GetEventByIdQueryVariables>;
-export const GetAllSectionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAllSections"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeFilter"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeFilter"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"searchLabel"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fromDate"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"toDate"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getAllSection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"timeFilter"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeFilter"}}},{"kind":"Argument","name":{"kind":"Name","value":"searchLabel"},"value":{"kind":"Variable","name":{"kind":"Name","value":"searchLabel"}}},{"kind":"Argument","name":{"kind":"Name","value":"fromDate"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fromDate"}}},{"kind":"Argument","name":{"kind":"Name","value":"toDate"},"value":{"kind":"Variable","name":{"kind":"Name","value":"toDate"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"totalAreaSqm"}},{"kind":"Field","name":{"kind":"Name","value":"ceilingHeightM"}},{"kind":"Field","name":{"kind":"Name","value":"floorMaterial"}},{"kind":"Field","name":{"kind":"Name","value":"hasLighting"}},{"kind":"Field","name":{"kind":"Name","value":"hasAirConditioning"}},{"kind":"Field","name":{"kind":"Name","value":"hasEmergencyExit"}},{"kind":"Field","name":{"kind":"Name","value":"hasInternet"}},{"kind":"Field","name":{"kind":"Name","value":"hasElectricity"}},{"kind":"Field","name":{"kind":"Name","value":"parkingSpots"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"sectionType"}},{"kind":"Field","name":{"kind":"Name","value":"hasReserveByAdmin"}},{"kind":"Field","name":{"kind":"Name","value":"reserveFrom"}},{"kind":"Field","name":{"kind":"Name","value":"reserveTo"}},{"kind":"Field","name":{"kind":"Name","value":"createDate"}},{"kind":"Field","name":{"kind":"Name","value":"updateDate"}}]}}]}}]} as unknown as DocumentNode<GetAllSectionsQuery, GetAllSectionsQueryVariables>;
-export const GetSectionByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSectionById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sectionId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getSectionById"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sectionId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sectionId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"totalAreaSqm"}},{"kind":"Field","name":{"kind":"Name","value":"ceilingHeightM"}},{"kind":"Field","name":{"kind":"Name","value":"floorMaterial"}},{"kind":"Field","name":{"kind":"Name","value":"hasLighting"}},{"kind":"Field","name":{"kind":"Name","value":"hasAirConditioning"}},{"kind":"Field","name":{"kind":"Name","value":"hasEmergencyExit"}},{"kind":"Field","name":{"kind":"Name","value":"hasInternet"}},{"kind":"Field","name":{"kind":"Name","value":"hasElectricity"}},{"kind":"Field","name":{"kind":"Name","value":"parkingSpots"}},{"kind":"Field","name":{"kind":"Name","value":"notes"}},{"kind":"Field","name":{"kind":"Name","value":"sectionType"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"sectionImage"}},{"kind":"Field","name":{"kind":"Name","value":"hasReserveByAdmin"}},{"kind":"Field","name":{"kind":"Name","value":"reserveFrom"}},{"kind":"Field","name":{"kind":"Name","value":"reserveTo"}},{"kind":"Field","name":{"kind":"Name","value":"createDate"}},{"kind":"Field","name":{"kind":"Name","value":"updateDate"}},{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"code"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"unitType"}},{"kind":"Field","name":{"kind":"Name","value":"defaultPrice"}},{"kind":"Field","name":{"kind":"Name","value":"isMandatory"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]}}]} as unknown as DocumentNode<GetSectionByIdQuery, GetSectionByIdQueryVariables>;
-export const GetSectionReservesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetSectionReserves"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sectionId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"eventName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"from"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"to"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getSectionReserveBySectionId"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sectionId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sectionId"}}},{"kind":"Argument","name":{"kind":"Name","value":"eventName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"eventName"}}},{"kind":"Argument","name":{"kind":"Name","value":"from"},"value":{"kind":"Variable","name":{"kind":"Name","value":"from"}}},{"kind":"Argument","name":{"kind":"Name","value":"to"},"value":{"kind":"Variable","name":{"kind":"Name","value":"to"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventName"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"endDate"}},{"kind":"Field","name":{"kind":"Name","value":"owner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"ownerFullName"}},{"kind":"Field","name":{"kind":"Name","value":"companyPhone"}}]}}]}}]}}]} as unknown as DocumentNode<GetSectionReservesQuery, GetSectionReservesQueryVariables>;
-export const CreateSectionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateSection"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SectionCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createSection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<CreateSectionMutation, CreateSectionMutationVariables>;
-export const UpdateSectionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateSection"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SectionUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateSection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<UpdateSectionMutation, UpdateSectionMutationVariables>;
-export const DeleteSectionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteSection"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sectionId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteSection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sectionId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sectionId"}}}]}]}}]} as unknown as DocumentNode<DeleteSectionMutation, DeleteSectionMutationVariables>;
-export const GetAllExtraServicesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAllExtraServices"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}},"defaultValue":{"kind":"IntValue","value":"0"}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"size"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}},"defaultValue":{"kind":"IntValue","value":"100"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getAllExtraService"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"Variable","name":{"kind":"Name","value":"size"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"totalPages"}},{"kind":"Field","name":{"kind":"Name","value":"totalElements"}},{"kind":"Field","name":{"kind":"Name","value":"content"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ExtraService"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"code"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"unitType"}},{"kind":"Field","name":{"kind":"Name","value":"defaultPrice"}},{"kind":"Field","name":{"kind":"Name","value":"isMandatory"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAllExtraServicesQuery, GetAllExtraServicesQueryVariables>;
+export const GetEventByIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetEventById' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'eventId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getEventById' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'eventId' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'eventId' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'eventName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'address' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'startDate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'endDate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'eventTime' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'endTime' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'type' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'exhibitionType' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'eventLink' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'eventImage' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'expectedNumberOfAttendees' },
+                },
+                {
+                  kind: 'Field',
+                  name: {
+                    kind: 'Name',
+                    value: 'expectedNumberOfCompanyAttendees',
+                  },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'status' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'category' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'nameAr' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'nameEn' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'description' },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'owner' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyName' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'ownerFullName' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyPhone' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyEmail' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyAddress' },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'agents' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyName' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyPhoto' },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'sections' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'services' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'category' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetEventByIdQuery, GetEventByIdQueryVariables>;
+export const GetAllSectionsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetAllSections' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'timeFilter' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'TimeFilter' },
+            },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'searchLabel' },
+          },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'fromDate' },
+          },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'toDate' },
+          },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getAllSection' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'timeFilter' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'timeFilter' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'searchLabel' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'searchLabel' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'fromDate' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'fromDate' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'toDate' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'toDate' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'totalAreaSqm' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'ceilingHeightM' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'floorMaterial' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'hasLighting' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasAirConditioning' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasEmergencyExit' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'hasInternet' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasElectricity' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'parkingSpots' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'sectionType' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasReserveByAdmin' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'reserveFrom' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'reserveTo' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'createDate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'updateDate' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetAllSectionsQuery, GetAllSectionsQueryVariables>;
+export const GetSectionByIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetSectionById' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'sectionId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getSectionById' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sectionId' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'sectionId' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'totalAreaSqm' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'ceilingHeightM' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'floorMaterial' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'hasLighting' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasAirConditioning' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasEmergencyExit' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'hasInternet' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasElectricity' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'parkingSpots' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'notes' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'sectionType' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'sectionImage' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'hasReserveByAdmin' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'reserveFrom' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'reserveTo' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'createDate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'updateDate' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'services' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'code' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'description' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'category' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'unitType' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'defaultPrice' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'isMandatory' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'isActive' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetSectionByIdQuery, GetSectionByIdQueryVariables>;
+export const GetSectionReservesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetSectionReserves' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'sectionId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'eventName' },
+          },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'from' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'to' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getSectionReserveBySectionId' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sectionId' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'sectionId' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'eventName' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'eventName' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'from' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'from' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'to' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'to' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'eventName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'status' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'type' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'startDate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'endDate' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'owner' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyName' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'ownerFullName' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'companyPhone' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetSectionReservesQuery,
+  GetSectionReservesQueryVariables
+>;
+export const CreateSectionDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'CreateSection' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'input' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'SectionCreateInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'createSection' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'input' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'input' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  CreateSectionMutation,
+  CreateSectionMutationVariables
+>;
+export const UpdateSectionDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'UpdateSection' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'input' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'SectionUpdateInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'updateSection' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'input' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'input' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  UpdateSectionMutation,
+  UpdateSectionMutationVariables
+>;
+export const DeleteSectionDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'DeleteSection' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'sectionId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'deleteSection' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sectionId' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'sectionId' },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  DeleteSectionMutation,
+  DeleteSectionMutationVariables
+>;
+export const GetAllExtraServicesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetAllExtraServices' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'page' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          defaultValue: { kind: 'IntValue', value: '0' },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'size' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          defaultValue: { kind: 'IntValue', value: '100' },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getAllExtraService' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'page' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'page' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'size' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'size' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'page' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'size' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'totalPages' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'totalElements' },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'content' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'InlineFragment',
+                        typeCondition: {
+                          kind: 'NamedType',
+                          name: { kind: 'Name', value: 'ExtraService' },
+                        },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'id' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'code' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'name' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'description' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'category' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'unitType' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'defaultPrice' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'isMandatory' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'isActive' },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetAllExtraServicesQuery,
+  GetAllExtraServicesQueryVariables
+>;
