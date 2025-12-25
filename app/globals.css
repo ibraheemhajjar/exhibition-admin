@@ -115,11 +115,47 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  /* Neutral/Gray Scale */
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #f2f2f7;
+  --color-neutral-200: #f1f1f1;
+  --color-neutral-300: #e7e7e1;
+  --color-neutral-400: #bbbbbd;
+  --color-neutral-500: #8a8a8e;
+  --color-neutral-600: #7f8596;
+  --color-neutral-700: #4e4e4e;
+  --color-neutral-800: #232020;
+  --color-neutral-900: #121327;
+  --color-neutral-950: #000000;
+
+  /* Blue (Primary) */
+  --color-primary-400: #169fff;
+  --color-primary-500: #007aff;
+
+  /* Success/Green */
+  --color-success-100: #b9e5c8;
+  --color-success-500: #34c759;
+
+  /* Warning/Orange */
+  --color-warning-100: #fdd397;
+  --color-warning-400: #b9a779;
+  --color-warning-500: #ff9500;
+
+  /* Error/Red */
+  --color-error-100: #f5cfd4;
+  --color-error-500: #ff3b30;
+
+  /* Font Family */
+  --font-sans: var(--font-expo), ui-sans-serif, system-ui, sans-serif;
+}
+
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply box-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-neutral-50 text-neutral-950;
   }
 }
