@@ -22,7 +22,7 @@ function VerifyOtpContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
-  const { countdown, isExpired, reset, formattedTime } = useCountdown(60);
+  const { isExpired, reset, formattedTime } = useCountdown(60);
 
   const form = useForm<VerifyOtpFormData>({
     resolver: zodResolver(verifyOtpSchema),
