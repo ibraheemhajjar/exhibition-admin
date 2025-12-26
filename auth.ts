@@ -24,7 +24,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
             permissions: user.permission,
           };
         } catch (error) {
-          console.error('Login failed:', error);
+          console.error('Auth error:', error);
           return null;
         }
       },

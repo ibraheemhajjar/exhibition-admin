@@ -2,26 +2,32 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
+import { Toaster } from '@/components/ui/sonner';
 
 const expoArabic = localFont({
   src: [
     {
-      path: '../public/fonts/expo-arabic/Expo_Arabic_Light.ttf',
+      path: '../public/fonts/expo-arabic/ExpoArabic-Light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../public/fonts/expo-arabic/Expo_Arabic_Book.ttf',
+      path: '../public/fonts/expo-arabic/ExpoArabic-Book.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../public/fonts/expo-arabic/Expo_Arabic_Medium.ttf',
+      path: '../public/fonts/expo-arabic/ExpoArabic-Medium.ttf',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../public/fonts/expo-arabic/Expo_Arabic_Bold.ttf',
+      path: '../public/fonts/expo-arabic/ExpoArabic-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/expo-arabic/ExpoArabic-Bold.otf',
       weight: '700',
       style: 'normal',
     },
@@ -43,7 +49,10 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={`${expoArabic.variable} font-sans antialiased`}>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          {children}
+          <Toaster position="top-left" dir="rtl" />
+        </SessionProvider>
       </body>
     </html>
   );
