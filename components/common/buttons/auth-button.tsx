@@ -19,7 +19,7 @@ export const AuthButton = forwardRef<HTMLButtonElement, AuthButtonProps>(
           'w-full h-fit rounded-full',
           'bg-neutral-950 text-neutral-50',
           'hover:bg-neutral-950/75 hover:cursor-pointer',
-          'text-[18px] font-semibold',
+          'text-base sm:text-[18px] font-semibold',
           'px-2.75 py-4',
           className
         )}

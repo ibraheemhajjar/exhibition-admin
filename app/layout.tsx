@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from '@/components/ui/sonner';
+import { IconSprite } from '@/components/icons/sprite';
+import { GraphQLProvider } from '@/lib/graphql/apollo-provider';
 
 const expoArabic = localFont({
   src: [
@@ -50,8 +52,11 @@ export default function RootLayout({
     <html lang="ar" dir="rtl">
       <body className={`${expoArabic.variable} font-sans antialiased`}>
         <SessionProvider>
-          {children}
-          <Toaster position="top-left" dir="rtl" />
+          <GraphQLProvider>
+            <IconSprite />
+            {children}
+            <Toaster position="top-left" dir="rtl" />
+          </GraphQLProvider>
         </SessionProvider>
       </body>
     </html>
