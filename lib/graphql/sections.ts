@@ -15,22 +15,7 @@ export const GET_ALL_SECTIONS = gql`
     ) {
       id
       name
-      totalAreaSqm
-      ceilingHeightM
-      floorMaterial
-      hasLighting
-      hasAirConditioning
-      hasEmergencyExit
-      hasInternet
-      hasElectricity
-      parkingSpots
-      isActive
-      sectionType
       hasReserveByAdmin
-      reserveFrom
-      reserveTo
-      createDate
-      updateDate
     }
   }
 `;
@@ -40,41 +25,12 @@ export const GET_SECTION_BY_ID = gql`
     getSectionById(sectionId: $sectionId) {
       id
       name
-      totalAreaSqm
-      ceilingHeightM
-      floorMaterial
-      hasLighting
-      hasAirConditioning
-      hasEmergencyExit
-      hasInternet
-      hasElectricity
-      parkingSpots
-      notes
-      sectionType
-      isActive
-      sectionImage
-      hasReserveByAdmin
-      reserveFrom
-      reserveTo
-      createDate
-      updateDate
-      services {
-        id
-        code
-        name
-        description
-        category
-        unitType
-        defaultPrice
-        isMandatory
-        isActive
-      }
     }
   }
 `;
 
-export const GET_SECTION_RESERVES = gql`
-  query GetSectionReserves(
+export const GET_SECTION_RESERVATIONS = gql`
+  query GetSectionReservations(
     $sectionId: ID!
     $eventName: String
     $from: Date
@@ -88,7 +44,7 @@ export const GET_SECTION_RESERVES = gql`
     ) {
       id
       eventName
-      status
+      description
       type
       startDate
       endDate

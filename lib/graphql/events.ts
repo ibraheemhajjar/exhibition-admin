@@ -6,45 +6,32 @@ export const GET_EVENT_BY_ID = gql`
       id
       eventName
       description
-      address
       startDate
       endDate
       eventTime
       endTime
-      type
-      exhibitionType
       eventLink
-      eventImage
-      expectedNumberOfAttendees
-      expectedNumberOfCompanyAttendees
+      address
+      ticketPrice
+      numberOfCompanies
+      type
       status
-      category {
+      sections {
         id
-        nameAr
-        nameEn
-        description
+        name
       }
       owner {
         id
-        companyName
         ownerFullName
+        companyName
+        companyAddress
         companyPhone
         companyEmail
-        companyAddress
       }
       agents {
         id
         companyName
         companyPhoto
-      }
-      sections {
-        id
-        name
-      }
-      services {
-        id
-        name
-        category
       }
     }
   }
