@@ -18,6 +18,7 @@ interface ConfirmationDialogProps {
   title: string;
   description?: string;
   confirmText: string;
+  confirmButtonClassName?: string;
   cancelText?: string;
   onConfirm: () => void;
   onCancel?: () => void;
@@ -31,6 +32,7 @@ export function ConfirmationDialog({
   title,
   description,
   confirmText,
+  confirmButtonClassName,
   cancelText,
   onConfirm,
   onCancel,
@@ -66,7 +68,7 @@ export function ConfirmationDialog({
             id="warning"
             className={cn('size-24 sm:size-37.5', iconColors[variant])}
           />
-          <DialogTitle className="text-lg sm:text-2xl font-medium text-neutral-950 text-center">
+          <DialogTitle className="text-lg sm:text-2xl font-medium text-neutral-950 text-center mx-8">
             {title}
           </DialogTitle>
           {description && (
@@ -77,7 +79,11 @@ export function ConfirmationDialog({
         </DialogHeader>
 
         <div className={cn('flex flex-col-reverse sm:flex-row gap-4')}>
-          <SecondaryButton onClick={handleConfirm} isLoading={isLoading}>
+          <SecondaryButton
+            onClick={handleConfirm}
+            isLoading={isLoading}
+            className={confirmButtonClassName}
+          >
             {confirmText}
           </SecondaryButton>
           {cancelText && (

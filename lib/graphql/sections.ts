@@ -58,6 +58,51 @@ export const GET_SECTION_RESERVATIONS = gql`
   }
 `;
 
+export const GET_SECTION_BY_ID_FULL = gql`
+  query GetSectionByIdFull($sectionId: ID!) {
+    getSectionById(sectionId: $sectionId) {
+      id
+      name
+      totalAreaSqm
+      ceilingHeightM
+      floorMaterial
+      hasLighting
+      hasAirConditioning
+      hasInternet
+      hasEmergencyExit
+      hasElectricity
+      parkingSpots
+      notes
+      sectionImage
+      sectionType
+      hasReserveByAdmin
+      reserveFrom
+      reserveTo
+      services {
+        id
+        name
+      }
+    }
+  }
+`;
+
+export const GET_ALL_EXTRA_SERVICE = gql`
+  query GetAllExtraService($page: Int, $size: Int) {
+    getAllExtraService(page: $page, size: $size) {
+      page
+      size
+      totalPages
+      totalElements
+      content {
+        ... on ExtraService {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
 export const CREATE_SECTION = gql`
   mutation CreateSection($input: SectionCreateInput!) {
     createSection(input: $input) {
@@ -79,5 +124,14 @@ export const UPDATE_SECTION = gql`
 export const DELETE_SECTION = gql`
   mutation DeleteSection($sectionId: ID!) {
     deleteSection(sectionId: $sectionId)
+  }
+`;
+
+export const GET_SECTION_RESERVE_BY_SECTION_ID = gql`
+  query GetSectionReserveBySectionId($sectionId: ID!) {
+    getSectionReserveBySectionId(sectionId: $sectionId) {
+      id
+      eventName
+    }
   }
 `;

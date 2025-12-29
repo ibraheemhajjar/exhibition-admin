@@ -11,29 +11,33 @@ import {
 import { Input } from '@/components/ui/input';
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form';
 
-interface FormInputProps<T extends FieldValues> {
+interface FormNumberInputProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   name: Path<T>;
   label?: string;
   placeholder?: string;
-  type?: string;
   disabled?: boolean;
   required?: boolean;
   direction?: 'ltr' | 'rtl';
   className?: string;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
-export function FormInput<T extends FieldValues>({
+export function FormNumberInput<T extends FieldValues>({
   form,
   name,
   label,
   placeholder,
-  type = 'text',
   disabled = false,
   required = false,
   direction = 'rtl',
   className,
-}: FormInputProps<T>) {
+  min,
+  max,
+  step,
+}: FormNumberInputProps<T>) {
   return (
     <FormField
       control={form.control}
@@ -49,10 +53,18 @@ export function FormInput<T extends FieldValues>({
           <FormControl>
             <Input
               {...field}
-              type={type}
+              type="number"
               placeholder={placeholder}
               disabled={disabled}
               dir={direction}
+              min={min}
+              max={max}
+              step={step}
+              onChange={(e) => {
+                const value = e.target.value;
+                field.onChange(value === '' ? undefined : Number(value));
+              }}
+              value={field.value ?? ''}
               className={cn(
                 'rounded-2xl border-0 bg-neutral-50 p-4 h-fit',
                 'text-base! text-neutral-950 placeholder:text-neutral-400',

@@ -50,7 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={`${expoArabic.variable} font-sans antialiased`}>
+      <body
+        className={`${expoArabic.variable} font-sans antialiased overflow-hidden`}
+      >
         <SessionProvider>
           <GraphQLProvider>
             <IconSprite />

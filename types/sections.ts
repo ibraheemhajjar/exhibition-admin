@@ -56,3 +56,163 @@ export interface GetSectionReservationsVariables {
 export interface GetSectionReservationsResponse {
   getSectionReserveBySectionId: Event[];
 }
+
+export enum FloorMaterial {
+  CONCRETE = 'CONCRETE',
+  CERAMIC = 'CERAMIC',
+  CARPET = 'CARPET',
+  WOOD = 'WOOD',
+  EPOXY = 'EPOXY',
+  OTHER = 'OTHER',
+}
+
+export const FLOOR_MATERIAL_LABELS: Record<FloorMaterial, string> = {
+  [FloorMaterial.CONCRETE]: 'خرسانة',
+  [FloorMaterial.CERAMIC]: 'سيراميك',
+  [FloorMaterial.CARPET]: 'سجاد',
+  [FloorMaterial.WOOD]: 'خشب',
+  [FloorMaterial.EPOXY]: 'إيبوكسي',
+  [FloorMaterial.OTHER]: 'أخرى',
+};
+
+export enum SectionType {
+  OPEN = 'OPEN',
+  EQUIPPED = 'EQUIPPED',
+  NOT_EQUIPPED = 'NOT_EQUIPPED',
+  CLOSED = 'CLOSED',
+  OTHER = 'OTHER',
+}
+
+export const SECTION_TYPE_LABELS: Record<SectionType, string> = {
+  [SectionType.OPEN]: 'مكشوف',
+  [SectionType.EQUIPPED]: 'مجهز',
+  [SectionType.NOT_EQUIPPED]: 'غير مجهز',
+  [SectionType.CLOSED]: 'مغلق',
+  [SectionType.OTHER]: 'غير ذلك',
+};
+
+export interface Service {
+  id: string;
+  name: string;
+}
+
+export interface GetAllExtraServiceResponse {
+  getAllExtraService: {
+    page: number;
+    size: number;
+    totalPages: number;
+    totalElements: number;
+    content: Service[];
+  };
+}
+
+export interface SectionFormData {
+  name: string;
+  totalAreaSqm: number | null;
+  ceilingHeightM: number | null;
+  floorMaterial: FloorMaterial | null;
+  hasLighting: boolean;
+  hasAirConditioning: boolean;
+  hasEmergencyExit: boolean;
+  hasInternet: boolean;
+  hasElectricity: boolean;
+  parkingSpots: boolean;
+  sectionImage: string | null;
+  services: string[];
+  sectionType: string | null;
+  hasReserveByAdmin: boolean;
+  reserveFrom: string | null;
+  reserveTo: string | null;
+}
+
+export interface GetSectionByIdFullResponse {
+  getSectionById: {
+    id: string;
+    name: string;
+    totalAreaSqm: number;
+    ceilingHeightM: number;
+    floorMaterial: FloorMaterial;
+    hasLighting: boolean;
+    hasAirConditioning: boolean;
+    hasEmergencyExit: boolean;
+    hasInternet: boolean;
+    hasElectricity: boolean;
+    parkingSpots: boolean;
+    notes: string | null;
+    sectionImage: string | null;
+    services: Service[];
+    sectionType: SectionType | null;
+    hasReserveByAdmin: boolean;
+    reserveFrom: string | null;
+    reserveTo: string | null;
+  };
+}
+
+export interface GetSectionByIdVariables {
+  sectionId: string;
+}
+
+export interface CreateSectionVariables {
+  input: {
+    name: string;
+    totalAreaSqm: number;
+    ceilingHeightM: number;
+    floorMaterial: FloorMaterial;
+    hasLighting: boolean;
+    hasAirConditioning: boolean;
+    hasEmergencyExit: boolean;
+    hasInternet: boolean;
+    hasElectricity: boolean;
+    parkingSpots: boolean;
+    notes?: string;
+    sectionImage?: string;
+    services?: string[];
+    sectionType?: SectionType | null;
+    hasReserveByAdmin: boolean;
+    reserveFrom?: string | null;
+    reserveTo?: string | null;
+  };
+}
+
+export interface UpdateSectionVariables {
+  input: {
+    id: string;
+    name?: string;
+    totalAreaSqm?: number;
+    ceilingHeightM?: number;
+    floorMaterial?: FloorMaterial;
+    hasLighting?: boolean;
+    hasAirConditioning?: boolean;
+    hasEmergencyExit?: boolean;
+    hasInternet?: boolean;
+    hasElectricity?: boolean;
+    parkingSpots?: boolean;
+    notes?: string;
+    sectionImage?: string;
+    newServicesId?: string[];
+    sectionType?: SectionType | null;
+    hasReserveByAdmin?: boolean;
+    reserveFrom?: string | null;
+    reserveTo?: string | null;
+  };
+}
+
+export interface DeleteSectionVariables {
+  sectionId: string;
+}
+
+export interface GetSectionReserveByIdResponse {
+  getSectionReserveBySectionId: {
+    id: string;
+    eventName: string;
+  }[];
+}
+
+export interface GetSectionReserveByIdVariables {
+  sectionId: string;
+}
+
+export interface GetAllExtraServiceVariables {
+  page?: number;
+  size?: number;
+}
